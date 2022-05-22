@@ -6,8 +6,8 @@ namespace AzureServiceBusQueueStorage
 {
     internal class Program
     {
-        private const string connectionString = "<connectionstring>";
-        private const string queueName = "<queue name>";
+        private const string connectionString = "DefaultEndpointsProtocol=https;AccountName=trainingchandanv1;AccountKey=+eGLlcxD+6KIsSWXVFaw5JgB5LVJNVCqDtu0KE/lKgzTJGpDv9GnfQih4ROpLZ7NtXi/QxFn2WMA+ASt06CXVw==;EndpointSuffix=core.windows.net";
+        private const string queueName = "test";
         private const int maxMessage = 10;
 
         private static void Main(string[] args)
@@ -25,19 +25,19 @@ namespace AzureServiceBusQueueStorage
                 QueueProperties prop = client.GetProperties();
                 int? cahcedMessage = prop.ApproximateMessagesCount;
 
-                Console.WriteLine("Reading message from queue without removing them");
+                //Console.WriteLine("Reading message from queue without removing them");
 
-                PeekedMessage[] peeked = client.PeekMessages((int)cahcedMessage);
+                //PeekedMessage[] peeked = client.PeekMessages((int)cahcedMessage);
 
-                Console.ReadLine();
-                foreach (PeekedMessage item in peeked)
-                {
-                    Console.WriteLine($"Message read from the queue {System.Text.Encoding.ASCII.GetString(item.Body)}");
+                //Console.ReadLine();
+                //foreach (PeekedMessage item in peeked)
+                //{
+                //    Console.WriteLine($"Message read from the queue {System.Text.Encoding.ASCII.GetString(item.Body)}");
 
-                    prop = client.GetProperties();
-                    int? queueLength = prop.ApproximateMessagesCount;
-                    Console.WriteLine($"Current Length of the queue is {queueLength}");
-                }
+                //    prop = client.GetProperties();
+                //    int? queueLength = prop.ApproximateMessagesCount;
+                //    Console.WriteLine($"Current Length of the queue is {queueLength}");
+                //}
 
                 Console.ReadLine();
 
